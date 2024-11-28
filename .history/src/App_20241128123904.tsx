@@ -24,10 +24,11 @@ const App: React.FC = () => {
             <Button label="Cancel" onClick={closeModal} />,
             <Button label="Confirm" onClick={() => alert("Confirmed!")} />,
           ]}
-          additionalText="Footer with two buttons."
+          additionalText="This is a footer with two buttons."
         >
           <p>
-            This dialog demonstrates a header with one button and two footer buttons.
+            This dialog demonstrates a footer with two buttons and one header
+            button.
           </p>
         </Modal>
       )}
@@ -37,8 +38,11 @@ const App: React.FC = () => {
           title="Dialog 2"
           icon={<span>⚙️</span>}
           headerButtons={[
-            <Button label="Settings" onClick={() => alert("Settings.")} />,
-            <Button label="Help" onClick={() => alert("Help.")} />,
+            <Button
+              label="Settings"
+              onClick={() => alert("Settings clicked!")}
+            />,
+            <Button label="Help" onClick={() => alert("Help clicked!")} />,
           ]}
         >
           <p>

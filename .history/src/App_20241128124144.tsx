@@ -27,7 +27,8 @@ const App: React.FC = () => {
           additionalText="Footer with two buttons."
         >
           <p>
-            This dialog demonstrates a header with one button and two footer buttons.
+            This dialog demonstrates a header with two buttons and one header
+            button.
           </p>
         </Modal>
       )}

@@ -5,29 +5,39 @@ import Button from "./components/Modal/Button";
 const App: React.FC = () => {
   const [currentModal, setCurrentModal] = useState<string | null>(null);
 
-  const closeModal = () => setCurrentModal(null);
+  const openModal = (modalId: string) => {
+    setCurrentModal(modalId);
+  };
+
+  const closeModal = () => {
+    setCurrentModal(null);
+  };
+
+  console.log("Rendering Modal:", title);
+  console.log("Current Modal State:", currentModal);
 
   return (
     <div>
-      <button onClick={() => setCurrentModal("modal1")}>Open Modal 1</button>
-      <button onClick={() => setCurrentModal("modal2")}>Open Modal 2</button>
-      <button onClick={() => setCurrentModal("modal3")}>Open Modal 3</button>
+      <button onClick={() => openModal("modal1")}>Open Modal 1</button>
+      <button onClick={() => openModal("modal2")}>Open Modal 2</button>
+      <button onClick={() => openModal("modal3")}>Open Modal 3</button>
 
       {currentModal === "modal1" && (
         <Modal
           title="Dialog 1"
           icon={<span>📄</span>}
           headerButtons={[
-            <Button label="Info" onClick={() => alert("Info button.")} />,
+            <Button label="Info" onClick={() => alert("Info clicked!")} />,
           ]}
           footerButtons={[
             <Button label="Cancel" onClick={closeModal} />,
             <Button label="Confirm" onClick={() => alert("Confirmed!")} />,
           ]}
-          additionalText="Footer with two buttons."
+          description="This is a footer with two buttons."
         >
           <p>
-            This dialog demonstrates a header with one button and two footer buttons.
+            This dialog demonstrates a footer with two buttons and one header
+            button.
           </p>
         </Modal>
       )}
@@ -37,8 +47,11 @@ const App: React.FC = () => {
           title="Dialog 2"
           icon={<span>⚙️</span>}
           headerButtons={[
-            <Button label="Settings" onClick={() => alert("Settings.")} />,
-            <Button label="Help" onClick={() => alert("Help.")} />,
+            <Button
+              label="Settings"
+              onClick={() => alert("Settings clicked!")}
+            />,
+            <Button label="Help" onClick={() => alert("Help clicked!")} />,
           ]}
         >
           <p>
@@ -50,7 +63,7 @@ const App: React.FC = () => {
       {currentModal === "modal3" && (
         <Modal
           title="Dialog 3"
-          additionalText="This is a footer with one button."
+          description="This is a footer with one button."
           footerButtons={[<Button label="Close" onClick={closeModal} />]}
         >
           <p>
